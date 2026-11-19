@@ -1,77 +1,94 @@
 
 # AI Personal Travel Assistant
 
-A full-stack AI travel planning application built with React,
-TypeScript, FastAPI, LangChain, RAG, and AI agents.
+A full-stack AI-powered travel planning application built with
+React, TypeScript, FastAPI, LangChain, and Groq-hosted LLMs.
 
-## Current phase
+## Tech Stack
 
-Phase 1: React frontend and FastAPI backend.
+**Frontend:** React, TypeScript, Tailwind CSS, Vite
 
-## Technology stack
+**Backend:** Python, FastAPI, Pydantic
 
-Frontend:
-- React
-- TypeScript
-- Vite
-- Tailwind CSS
-- Axios
-- React Router
+**AI:** LangChain LCEL, Groq API, GPT-OSS-20B
 
-Backend:
-- Python
-- FastAPI
-- Pydantic
-- Uvicorn
+**Testing:** pytest, FastAPI TestClient
 
-Planned:
-- LangChain and LangGraph
-- LLM integration
-- ChromaDB and RAG
-- SQLite
-- Weather and places APIs
-- LangSmith
-- Docker and AWS
+## Implemented Features
 
-## Run the backend
+- AI-powered travel information extraction
+- Personalized travel recommendations
+- Multi-stage sequential trip planning
+- Parallel travel-data processing
+- Sequential versus parallel latency benchmarking
+- Structured API request and response validation
+- Automated backend tests
 
-From the project root:
+## Project Structure
+
+- `backend/app/` — FastAPI application
+- `backend/tests/` — Backend tests
+- `frontend/src/` — React application
+- `backend/benchmark_parallel.py` — Performance benchmark
+
+## Local Development
+
+### Backend
 
 ```bash
-source backend/.venv/bin/activate
 cd backend
-uvicorn app.main:app --reload --port 8000
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt -r requirements-dev.txt
+cp .env.example .env
 ```
 
-Backend URL: http://localhost:8000
+Configure your Groq API key in `backend/.env`.
 
-Health endpoint: http://localhost:8000/health
+Start the API:
 
-API docs: http://localhost:8000/docs
+```bash
+python -m uvicorn app.main:app --reload --port 8000
+```
 
-## Run the frontend
+API documentation: http://127.0.0.1:8000/docs
 
-In a separate terminal from the project root:
+### Frontend
 
 ```bash
 cd frontend
+npm ci
 npm run dev
 ```
 
-Frontend URL: http://localhost:5173
+Frontend: http://localhost:5173
 
-## Run backend tests
+## Testing
 
-From the backend directory:
+Backend:
 
 ```bash
+cd backend
 python -m pytest -v
 ```
 
-## Build the frontend
-
-From the frontend directory:
+Frontend:
 
 ```bash
+cd frontend
 npm run build
 ```
+
+## Development Status
+
+Phases 1–5 implemented.
+
+Current weather and place-data demonstrations use mock data.
+
+Planned enhancements:
+- Conditional travel-planning workflows
+- Retrieval-Augmented Generation (RAG)
+- Travel knowledge database
+- Live travel API integrations
+- Docker and AWS deployment
+- GitHub Actions CI/CD
